@@ -1,8 +1,8 @@
 BIN:=calculator
-BIN_SRCS:=main.o maths.o usage.o
+BIN_OBJS:=main.o maths.o usage.o
 CC:=gcc
 CFLAGS:=-Wall -Ipwd
-CPPFLAGS := -I$(shell pwd)/
+CPPFLAGS := -I$(shell pwd)
 
 
 PREFIX := /usr
@@ -10,7 +10,7 @@ PREFIX := /usr
 .PHONY: clean all install uninstall
 all: $(BIN)
 
-$(BIN): $(BIN_SRCS)
+$(BIN): $(BIN_OBJS)
 	 $(CC) $(CFLAGS)  -o $@ $^ $(CPPFLAGS)
 
 install:
@@ -18,4 +18,4 @@ install:
 uninstall:
 	
 clean:
-	$(RM) $(BIN) $(BIN_SRCS)
+	$(RM) $(BIN) $(BIN_OBJS)
