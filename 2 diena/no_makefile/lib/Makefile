@@ -1,22 +1,21 @@
 BIN:=myprog
-BIN_SRCS:=main.o
+BIN_OBJS:=main.o
 
 LIB:=libfile_reader.so
-LIB_SRCS := file_reader.o
+LIB_OBJS := file_reader.o
 
-CPPFLAGS := -I$(shell pwd)/
-LDFLAGS := -L$(shell pwd)/ -lfile_reader
-CC:=gcc
+CPPFLAGS := -I$(shell pwd)
+LDFLAGS := -L$(shell pwd) -lfile_reader
 
 .PHONY: clean all
 
 all: $(LIB) $(BIN)	
 
-$(LIB):  $(LIB_SRCS)
+$(LIB):  $(LIB_OBJS)
 	$(CC) -fpic -shared -o $@ $^
 	
-$(BIN): $(BIN_SRCS)
+$(BIN): $(BIN_OBJS)
 	$(CC) $(CPPFLAGS) -o $@ $^ $(LDFLAGS) 
 	
 clean:
-	$(RM) $(LIB) $(BIN) $(BIN_SRCS) $(LIB_SRCS)
+	$(RM) $(LIB) $(BIN) $(BIN_OBJS) $(LIB_OBJS)
