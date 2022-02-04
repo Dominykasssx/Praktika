@@ -1,0 +1,11 @@
+struct Person* create_node(char *name, char *surname, char *number, char *email);
+struct Person* create_address_node(char *address_line);
+void add_to_list(struct Person **list, struct Person *node);
+void print_list(struct Person *list);
+void delete_list(struct Person **list);
+void load_addresses(FILE *file, struct Person **list);
+void print_start(struct Person *list);
+void add_to_list_position(struct Person **list, struct Person *person, int position);
+void findByPosition(struct Person *list, int position);
+void findByText(struct Person *list, char text[30]);
+void deleteByPosition(struct Person **list, int position);
